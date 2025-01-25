@@ -3,7 +3,10 @@ describe('Test suite', () =>
     beforeEach(()=>{
       cy.visit('https://parabank.parasoft.com/parabank/register.htm');
     }) 
-      
+
+  //   it('should pause the test execution', () => {
+  //     cy.pause();
+  // });
     it('Verify the register form UI elements', function() 
     {
       
@@ -41,27 +44,37 @@ describe('Test suite', () =>
     it('Should Register without a phone number', function() 
 {
  
-  cy.get('#customer\\.firstName').clear('te');
-  cy.get('#customer\\.firstName').type('test firstname');
-  cy.get('#customer\\.lastName').clear('te');
-  cy.get('#customer\\.lastName').type('test lastname');
-  cy.get(':nth-child(3) > [width="20%"]').click();
-  cy.get('#customer\\.address\\.street').clear('t');
-  cy.get('#customer\\.address\\.street').type('test address');
-  cy.get('#customer\\.address\\.city').clear('Test city');
-  cy.get('#customer\\.address\\.city').type('Test city');
-  cy.get('#customer\\.address\\.state').clear('Test state');
-  cy.get('#customer\\.address\\.state').type('Test state');
-  cy.get('#customer\\.address\\.zipCode').clear('so12 45f');
-  cy.get('#customer\\.address\\.zipCode').type('so12 45f');
-  cy.get('#customer\\.ssn').clear('128789');
-  cy.get('#customer\\.ssn').type('128789');
-  cy.get('#customer\\.username').clear('te');
-  cy.get('#customer\\.username').type('222224'); //change
-  cy.get('#customer\\.password').clear('t');
-  cy.get('#customer\\.password').type('test');
+  
+  
+ // cy.get('#customer\\.username').type(Math.floor(Math.random()*10000)); //to provide random numbers
+ //cy.get('#customer\\.username').type('TestAswat'+Math.floor(Math.random()*10000));//to provide random 
+   cy.fixture('users').then((data)=>{
+
+    data.usernames.forEach((username)=>
+    {
+      cy.get('#customer\\.firstName').clear('te');
+      cy.get('#customer\\.firstName').type('test firstname');
+      cy.get('#customer\\.lastName').clear('te');
+      cy.get('#customer\\.lastName').type('test lastname');
+      cy.get(':nth-child(3) > [width="20%"]').click();
+      cy.get('#customer\\.address\\.street').clear('t');
+      cy.get('#customer\\.address\\.street').type('test address');
+      cy.get('#customer\\.address\\.city').clear('Test city');
+      cy.get('#customer\\.address\\.city').type('Test city');
+      cy.get('#customer\\.address\\.state').clear('Test state');
+      cy.get('#customer\\.address\\.state').type('Test state');
+      cy.get('#customer\\.address\\.zipCode').clear('so12 45f');
+      cy.get('#customer\\.address\\.zipCode').type('so12 45f');
+      cy.get('#customer\\.ssn').clear('128789');
+      cy.get('#customer\\.ssn').type('128789');
+      cy.get('#customer\\.username').clear('te');
+
+      cy.get('#customer\\.username').type(username);
+      //cy.get('#customer\\.username').clear('te');
+      cy.get('#customer\\.password').clear('t');
+  cy.get('#customer\\.password').type('testp');
   cy.get('#repeatedPassword').clear('te');
-  cy.get('#repeatedPassword').type('test');
+  cy.get('#repeatedPassword').type('testp');
   cy.get('[colspan="2"] > .button').click();
   cy.get('#rightPanel > p').click();
   cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
@@ -70,6 +83,12 @@ describe('Test suite', () =>
   cy.get('.smallText').click();
   cy.get('.smallText').click();
   cy.get('body').click();
+  cy.contains('a', 'Log Out').click();
+  cy.get('#loginPanel > :nth-child(3) > a').click();
+    });
+   });
+
+  
  
 });
 
