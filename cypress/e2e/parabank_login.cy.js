@@ -67,7 +67,7 @@ it('Should Validate empty form submission', function()
    cy.get(':nth-child(2) > .input').type('Tilcll');
    cy.get(':nth-child(4) > .input').type('Tilcll');
    cy.get(':nth-child(5) > .button').click();
-   cy.contains('Welcome').should('be.visible');
+   cy.get('b').should('contain', 'Welcome');
 
  
  });

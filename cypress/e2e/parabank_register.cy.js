@@ -52,23 +52,23 @@ describe('Test suite', () => {
         cy.get('#customer\\.lastName').clear('te');
         cy.get('#customer\\.lastName').type(user.lastname);
         cy.get(':nth-child(3) > [width="20%"]').click();
-        cy.get('#customer\\.address\\.street').clear('t');
-        cy.get('#customer\\.address\\.street').type('test address');
-        cy.get('#customer\\.address\\.city').clear('Test city');
-        cy.get('#customer\\.address\\.city').type('Test city');
-        cy.get('#customer\\.address\\.state').clear('Test state');
-        cy.get('#customer\\.address\\.state').type('Test state');
-        cy.get('#customer\\.address\\.zipCode').clear('so12 45f');
-        cy.get('#customer\\.address\\.zipCode').type('so12 45f');
-        cy.get('#customer\\.ssn').clear('128789');
-        cy.get('#customer\\.ssn').type('128789');
-        cy.get('#customer\\.username').clear('te');
+        cy.get('#customer\\.address\\.street').clear(user.street);
+        cy.get('#customer\\.address\\.street').type(user.street);
+        cy.get('#customer\\.address\\.city').clear(user.city);
+        cy.get('#customer\\.address\\.city').type(user.city);
+        cy.get('#customer\\.address\\.state').clear(user.state);
+        cy.get('#customer\\.address\\.state').type(user.state);
+        cy.get('#customer\\.address\\.zipCode').clear(user.zip);
+        cy.get('#customer\\.address\\.zipCode').type(user.zip);
+        cy.get('#customer\\.ssn').clear(user.ssn);
+        cy.get('#customer\\.ssn').type(user.ssn);
+        cy.get('#customer\\.username').clear(user.username);
 
         cy.get('#customer\\.username').type(user.username);
         //cy.get('#customer\\.username').clear('te');
-        cy.get('#customer\\.password').clear('t');
+        cy.get('#customer\\.password').clear(user.password);
         cy.get('#customer\\.password').type(user.password);
-        cy.get('#repeatedPassword').clear('te');
+        cy.get('#repeatedPassword').clear(user.repeatpassword);
         cy.get('#repeatedPassword').type(user.repeatpassword)
         cy.get('[colspan="2"] > .button').click();
         cy.get('#rightPanel > p').click();
@@ -166,11 +166,11 @@ describe('Test suite', () => {
     cy.get('#customer\\.ssn').clear('128789');
     cy.get('#customer\\.ssn').type('128789');
     cy.get('#customer\\.username').clear('T');
-    cy.get('#customer\\.username').type('Tilclp'); //change
+    cy.get('#customer\\.username').type('Tilclpq'); //change
     cy.get('#customer\\.password').clear('T');
-    cy.get('#customer\\.password').type('Tilclp');//change
+    cy.get('#customer\\.password').type('Tilclpq');//change
     cy.get('#repeatedPassword').clear('T');
-    cy.get('#repeatedPassword').type('Tilclp');//change
+    cy.get('#repeatedPassword').type('Tilclpq');//change
     cy.get('[colspan="2"] > .button').click();
     cy.wait(1000);
     cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
