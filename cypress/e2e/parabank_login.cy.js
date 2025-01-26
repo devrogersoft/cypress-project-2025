@@ -64,10 +64,11 @@ it('Should Validate empty form submission', function()
  {
  
    cy.get(':nth-child(4) > .input').clear('t');
-   cy.get(':nth-child(2) > .input').type('Tilcll');
-   cy.get(':nth-child(4) > .input').type('Tilcll');
+   cy.get(':nth-child(2) > .input').type('manuthy');
+   cy.get(':nth-child(4) > .input').type('manuthy');
    cy.get(':nth-child(5) > .button').click();
-   cy.get('b').should('contain', 'Welcome');
+   //cy.get('b').should('contain', 'Welcome');
+   cy.contains('b', 'Welcome').should('be.visible');
 
  
  });

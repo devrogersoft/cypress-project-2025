@@ -166,11 +166,11 @@ describe('Test suite', () => {
     cy.get('#customer\\.ssn').clear('128789');
     cy.get('#customer\\.ssn').type('128789');
     cy.get('#customer\\.username').clear('T');
-    cy.get('#customer\\.username').type('Tilclpq'); //change
+    cy.get('#customer\\.username').type('Tilclpw'); //change
     cy.get('#customer\\.password').clear('T');
-    cy.get('#customer\\.password').type('Tilclpq');//change
+    cy.get('#customer\\.password').type('Tilclpw');//change
     cy.get('#repeatedPassword').clear('T');
-    cy.get('#repeatedPassword').type('Tilclpq');//change
+    cy.get('#repeatedPassword').type('Tilclpw');//change
     cy.get('[colspan="2"] > .button').click();
     cy.wait(1000);
     cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
