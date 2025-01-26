@@ -1,4 +1,4 @@
-describe('Test suite', () => 
+describe('Test suite for forgot password feature', () => 
     {
       beforeEach(()=>{
         cy.visit('https://parabank.parasoft.com/parabank/register.htm');
@@ -22,46 +22,37 @@ describe('Test suite', () =>
       });
       it('Should Provide invalid customer informations to validate the account', function() 
       {
-        
-        cy.visit('https://parabank.parasoft.com/parabank/register.htm');
+        cy.fixture('forgotpassword_users').then((data) => {
+
+          data.invaliddetails.forEach((user) => {
+        //cy.visit('https://parabank.parasoft.com/parabank/register.htm');
         cy.get('#loginPanel > :nth-child(2) > a').click();
-        cy.get('#firstName').clear('r');
-        cy.get('#firstName').type('rtrt');
-        cy.get('#lastName').clear('te');
-        cy.get('#lastName').type('teey');
-        cy.get('#address\\.street').clear('fg');
-        cy.get('#address\\.street').type('fgg');
-        cy.get('#address\\.city').clear('fg');
-        cy.get('#address\\.city').type('fgdfg');
-        cy.get('#address\\.state').clear('g');
-        cy.get('#address\\.state').type('gdgd');
-        cy.get('#address\\.zipCode').clear('fg');
-        cy.get('#address\\.zipCode').type('fgfg');
-        cy.get('#ssn').clear('fs');
-        cy.get('#ssn').type('fsgfg');
+        cy.get('#firstName').type(user.firstname);
+        cy.get('#lastName').type(user.lastname);
+        cy.get('#address\\.street').type(user.address);
+        cy.get('#address\\.city').type(user.city);
+        cy.get('#address\\.state').type(user.state);
+        cy.get('#address\\.zipCode').type(user.zip);
+        cy.get('#ssn').type(user.ssn);
         cy.get('[colspan="2"] > .button').click();
         cy.get('.error').should('have.text', 'The customer information provided could not be found.');
         cy.get('.error').should('be.visible');
-       
+          });
+        });
       });
       it('Should Provide valid customer informations to validate the account', function() 
       {
-     
+        cy.fixture('forgotpassword_users').then((data) => {
+
+          data.validUser.forEach((user) => {
         cy.get('#loginPanel > :nth-child(2) > a').click();
-        cy.get('#firstName').clear('te');
-        cy.get('#firstName').type('Leela');
-        cy.get('#lastName').clear('te');
-        cy.get('#lastName').type('Peter');
-        cy.get('#address\\.street').clear('t');
-        cy.get('#address\\.street').type('test address');
-        cy.get('#address\\.city').clear('te');
-        cy.get('#address\\.city').type('test city');
-        cy.get('#address\\.state').clear('te');
-        cy.get('#address\\.state').type('test state');
-        cy.get('#address\\.zipCode').clear('t');
-        cy.get('#address\\.zipCode').type('123456');
-        cy.get('#ssn').clear('te');
-        cy.get('#ssn').type('12345');
+        cy.get('#firstName').type(user.firstname);
+        cy.get('#lastName').type(user.lastname);
+        cy.get('#address\\.street').type(user.address);
+        cy.get('#address\\.city').type(user.city);
+        cy.get('#address\\.state').type(user.state);
+        cy.get('#address\\.zipCode').type(user.zip);
+        cy.get('#ssn').type(user.ssn);
         cy.get('[colspan="2"] > .button').click();
         cy.get('.title').should('have.text', 'Customer Lookup');
         cy.get('#rightPanel > :nth-child(2)').should('have.text', 'Your login information was located successfully. You are now logged in. ');
@@ -70,6 +61,8 @@ describe('Test suite', () =>
         cy.get('#leftPanel > ul > :nth-child(8) > a').click();
        
       });
+    });
+  });
       it('Should Verify the UI elements of contact us form', function() 
       {
       
