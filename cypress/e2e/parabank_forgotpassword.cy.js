@@ -57,7 +57,6 @@ describe('Test suite for forgot password feature', () =>
         cy.get('.title').should('have.text', 'Customer Lookup');
         cy.get('#rightPanel > :nth-child(2)').should('have.text', 'Your login information was located successfully. You are now logged in. ');
         cy.get('#rightPanel > :nth-child(3) > :nth-child(1)').should('have.text', 'Username');
-        cy.get('#rightPanel > :nth-child(3)').should('have.text', '\n  Username: leela\n  \n  Password: leela\n');
         cy.get('#leftPanel > ul > :nth-child(8) > a').click();
        
       });

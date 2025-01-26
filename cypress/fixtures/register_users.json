@@ -1,9 +1,9 @@
 {
     "userinfo": [
         {
-            "username": "manuthiy",
-            "password": "manuthiy",
-            "repeatpassword": "manuthiy",
+            "username": "manuthiyaa",
+            "password": "manuthiyaa",
+            "repeatpassword": "manuthiyaa",
             "street": "streetmanuthy",
             "city": "citymanuthy",
             "state": "statestate",
@@ -17,22 +17,22 @@
         {
             "username": "Janet",
             "password": "James",
+            "repeatpassword": "manuthyt",
             "street": "Street 1, near church road",
             "city": "Leeds",
             "state": "York",
             "zip": "Ls25 647",
             "phone": "0124567891",
             "ssn": "454666",
-            "repeatpassword": "manuthyt",
             "firstname": "Janet",
             "lastname": "James John"
         }
     ],
     "validregister": [
         {
-            "username": "Tilclpi",
-            "password": "Tilclpi",
-            "repeatpassword": "Tilclpwe",
+            "username": "Tilclpit",
+            "password": "Tilclpit",
+            "repeatpassword": "Tilclpt",
             "street": "Street 1, near church road , Roundhay",
             "city": "Test city",
             "state": "Test state",
