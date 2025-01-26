@@ -44,13 +44,13 @@ describe('Test suite', () => {
 
     // cy.get('#customer\\.username').type(Math.floor(Math.random()*10000)); //to provide random numbers
     //cy.get('#customer\\.username').type('TestAswat'+Math.floor(Math.random()*10000));//to provide random alpha numeric values
-    cy.fixture('users').then((data) => {
+    cy.fixture('register_users').then((data) => {
 
-      data.usernames.forEach((username) => {
+      data.userinfo.forEach((user) => {
         cy.get('#customer\\.firstName').clear('te');
-        cy.get('#customer\\.firstName').type('test firstname');
+        cy.get('#customer\\.firstName').type(user.firstname);
         cy.get('#customer\\.lastName').clear('te');
-        cy.get('#customer\\.lastName').type('test lastname');
+        cy.get('#customer\\.lastName').type(user.lastname);
         cy.get(':nth-child(3) > [width="20%"]').click();
         cy.get('#customer\\.address\\.street').clear('t');
         cy.get('#customer\\.address\\.street').type('test address');
@@ -64,12 +64,12 @@ describe('Test suite', () => {
         cy.get('#customer\\.ssn').type('128789');
         cy.get('#customer\\.username').clear('te');
 
-        cy.get('#customer\\.username').type(username);
+        cy.get('#customer\\.username').type(user.username);
         //cy.get('#customer\\.username').clear('te');
         cy.get('#customer\\.password').clear('t');
-        cy.get('#customer\\.password').type('testp');
+        cy.get('#customer\\.password').type(user.password);
         cy.get('#repeatedPassword').clear('te');
-        cy.get('#repeatedPassword').type('testp');
+        cy.get('#repeatedPassword').type(user.repeatpassword)
         cy.get('[colspan="2"] > .button').click();
         cy.get('#rightPanel > p').click();
         cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
@@ -168,11 +168,11 @@ describe('Test suite', () => {
     cy.get('#customer\\.ssn').clear('128789');
     cy.get('#customer\\.ssn').type('128789');
     cy.get('#customer\\.username').clear('T');
-    cy.get('#customer\\.username').type('Tilcbi'); //change
+    cy.get('#customer\\.username').type('Tilcll'); //change
     cy.get('#customer\\.password').clear('T');
-    cy.get('#customer\\.password').type('Tilcbi');//change
+    cy.get('#customer\\.password').type('Tilcll');//change
     cy.get('#repeatedPassword').clear('T');
-    cy.get('#repeatedPassword').type('Tilcbi');//change
+    cy.get('#repeatedPassword').type('Tilcll');//change
     cy.get('[colspan="2"] > .button').click();
     cy.wait(1000);
     cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');

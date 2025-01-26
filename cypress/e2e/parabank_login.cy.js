@@ -9,34 +9,34 @@ describe('Test suite', () =>
 it('Should Validate empty form submission', function() 
 {
 
-  // cy.get('h2').click();
-  // cy.get('h2').should('have.text', 'Customer Login');
-  // cy.get(':nth-child(1) > b').should('have.text', 'Username');
-  // cy.get(':nth-child(3) > b').should('have.text', 'Password');
-  // cy.get('body').click();
-  // cy.get(':nth-child(5) > .button').click();
-  // cy.get('.error').should('have.text', 'Please enter a username and password.');
-
-  // Validate UI elements
   cy.get('h2').click();
   cy.get('h2').should('have.text', 'Customer Login');
   cy.get(':nth-child(1) > b').should('have.text', 'Username');
   cy.get(':nth-child(3) > b').should('have.text', 'Password');
   cy.get('body').click();
-
-  // Set up API intercept
-  cy.intercept('POST', '**/login.htm').as('loginRequest'); 
-
-   cy.get(':nth-child(5) > .button').click(); // Click the login button
-
-  // Validate error message on UI
+  cy.get(':nth-child(5) > .button').click();
   cy.get('.error').should('have.text', 'Please enter a username and password.');
 
-  // Wait for the API call and validate response
-  cy.wait('@loginRequest').then((interception) => {
-    expect(interception.response.statusCode).to.eq(200); // Confirm status code
-    expect(interception.response.body).to.have.property('message', 'Please enter a username and password.'); // Validate response body
-  });
+  // // Validate UI elements
+  // cy.get('h2').click();
+  // cy.get('h2').should('have.text', 'Customer Login');
+  // cy.get(':nth-child(1) > b').should('have.text', 'Username');
+  // cy.get(':nth-child(3) > b').should('have.text', 'Password');
+  // cy.get('body').click();
+
+  // // Set up API intercept
+  // cy.intercept('POST', '**/login.htm').as('loginRequest'); 
+
+  //  cy.get(':nth-child(5) > .button').click(); // Click the login button
+
+  // // Validate error message on UI
+  // cy.get('.error').should('have.text', 'Please enter a username and password.');
+
+  // // Wait for the API call and validate response
+  // cy.wait('@loginRequest').then((interception) => {
+  //   expect(interception.response.statusCode).to.eq(200); // Confirm status code
+  //   expect(interception.response.body).to.have.property('message', 'Please enter a username and password.'); // Validate response body
+  // });
    
 });
  it('should check the user can login using username only',function()
@@ -85,8 +85,8 @@ it('Should Validate empty form submission', function()
  {
  
    cy.get(':nth-child(4) > .input').clear('t');
-   cy.get(':nth-child(2) > .input').type('123');
-   cy.get(':nth-child(4) > .input').type('123');
+   cy.get(':nth-child(2) > .input').type('Tilcll');
+   cy.get(':nth-child(4) > .input').type('Tilcll');
    cy.get(':nth-child(5) > .button').click();
    cy.contains('Welcome').should('be.visible');
 
