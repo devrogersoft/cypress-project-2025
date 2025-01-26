@@ -49,9 +49,9 @@ describe('Test suite', () =>
      
         cy.get('#loginPanel > :nth-child(2) > a').click();
         cy.get('#firstName').clear('te');
-        cy.get('#firstName').type('test firstname');
+        cy.get('#firstName').type('Leela');
         cy.get('#lastName').clear('te');
-        cy.get('#lastName').type('test lastname');
+        cy.get('#lastName').type('Peter');
         cy.get('#address\\.street').clear('t');
         cy.get('#address\\.street').type('test address');
         cy.get('#address\\.city').clear('te');
@@ -59,14 +59,14 @@ describe('Test suite', () =>
         cy.get('#address\\.state').clear('te');
         cy.get('#address\\.state').type('test state');
         cy.get('#address\\.zipCode').clear('t');
-        cy.get('#address\\.zipCode').type('test zipcode');
+        cy.get('#address\\.zipCode').type('123456');
         cy.get('#ssn').clear('te');
-        cy.get('#ssn').type('test ssn');
+        cy.get('#ssn').type('12345');
         cy.get('[colspan="2"] > .button').click();
         cy.get('.title').should('have.text', 'Customer Lookup');
         cy.get('#rightPanel > :nth-child(2)').should('have.text', 'Your login information was located successfully. You are now logged in. ');
         cy.get('#rightPanel > :nth-child(3) > :nth-child(1)').should('have.text', 'Username');
-        cy.get('#rightPanel > :nth-child(3)').should('have.text', '\n  Username: test5\n  \n  Password: test5\n');
+        cy.get('#rightPanel > :nth-child(3)').should('have.text', '\n  Username: leela\n  \n  Password: leela\n');
         cy.get('#leftPanel > ul > :nth-child(8) > a').click();
        
       });

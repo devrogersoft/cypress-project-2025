@@ -44,9 +44,9 @@ describe('Test suite', () => {
 
     // cy.get('#customer\\.username').type(Math.floor(Math.random()*10000)); //to provide random numbers
     //cy.get('#customer\\.username').type('TestAswat'+Math.floor(Math.random()*10000));//to provide random alpha numeric values
-    cy.fixture('register_users').then((data) => {
+        cy.fixture('register_users').then((data) => {
 
-      data.userinfo.forEach((user) => {
+        data.userinfo.forEach((user) => {
         cy.get('#customer\\.firstName').clear('te');
         cy.get('#customer\\.firstName').type(user.firstname);
         cy.get('#customer\\.lastName').clear('te');
@@ -83,8 +83,6 @@ describe('Test suite', () => {
         cy.screenshot();
       });
     });
-
-
 
   });
 
@@ -168,11 +166,11 @@ describe('Test suite', () => {
     cy.get('#customer\\.ssn').clear('128789');
     cy.get('#customer\\.ssn').type('128789');
     cy.get('#customer\\.username').clear('T');
-    cy.get('#customer\\.username').type('Tilcll'); //change
+    cy.get('#customer\\.username').type('Tilclp'); //change
     cy.get('#customer\\.password').clear('T');
-    cy.get('#customer\\.password').type('Tilcll');//change
+    cy.get('#customer\\.password').type('Tilclp');//change
     cy.get('#repeatedPassword').clear('T');
-    cy.get('#repeatedPassword').type('Tilcll');//change
+    cy.get('#repeatedPassword').type('Tilclp');//change
     cy.get('[colspan="2"] > .button').click();
     cy.wait(1000);
     cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');

@@ -16,27 +16,6 @@ it('Should Validate empty form submission', function()
   cy.get('body').click();
   cy.get(':nth-child(5) > .button').click();
   cy.get('.error').should('have.text', 'Please enter a username and password.');
-
-  // // Validate UI elements
-  // cy.get('h2').click();
-  // cy.get('h2').should('have.text', 'Customer Login');
-  // cy.get(':nth-child(1) > b').should('have.text', 'Username');
-  // cy.get(':nth-child(3) > b').should('have.text', 'Password');
-  // cy.get('body').click();
-
-  // // Set up API intercept
-  // cy.intercept('POST', '**/login.htm').as('loginRequest'); 
-
-  //  cy.get(':nth-child(5) > .button').click(); // Click the login button
-
-  // // Validate error message on UI
-  // cy.get('.error').should('have.text', 'Please enter a username and password.');
-
-  // // Wait for the API call and validate response
-  // cy.wait('@loginRequest').then((interception) => {
-  //   expect(interception.response.statusCode).to.eq(200); // Confirm status code
-  //   expect(interception.response.body).to.have.property('message', 'Please enter a username and password.'); // Validate response body
-  // });
    
 });
  it('should check the user can login using username only',function()
@@ -60,12 +39,12 @@ it('Should Validate empty form submission', function()
  });
  it('should check the user can login using invalid credentials',function() 
  {
- //test failing now bcas user is able to login using invalid credentials, expected it shouldn't
+ 
    cy.get(':nth-child(4) > .input').clear('t');
    cy.get(':nth-child(2) > .input').type('7ugl');
    cy.get(':nth-child(4) > .input').type('tes.t7');
    cy.get(':nth-child(5) > .button').click();
-   cy.get('.error').should('have.text', 'Please enter a username and password.');
+   cy.get('.error').should('have.text', 'The username and password could not be verified.');
  
  });
  it('should Verify the UI elements of login page',function()

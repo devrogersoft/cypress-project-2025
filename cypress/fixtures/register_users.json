@@ -1,26 +1,26 @@
 {
     "userinfo": [
         {
-            "username": "manut",
-            "password": "manut",
-            "street": "kalani",
-            "city": "vani",
-            "state": "vijayse",
-            "zip": "123456",
-            "repeatpassword": "manut",
-            "firstname": "kiran",
+            "username": "manuth",
+            "password": "manuth",
+            "street": "streetmanut",
+            "city": "citymanut",
+            "state": "statestate",
+            "zip": "1234567",
+            "repeatpassword": "manuth",
+            "firstname": "manuth",
             "lastname": "kumar"
         },
         {
             "username": "grees",
             "password": "grees",
-            "street": "kala",
-            "city": "van",
-            "state": "vijay",
-            "zip": "12345",
+            "street": "street gree",
+            "city": "citygree",
+            "state": "stategree",
+            "zip": "1234567",
             "repeatpassword": "grees",
-            "firstname": "kiran",
-            "lastname": "kumar"
+            "firstname": "grees",
+            "lastname": "grees"
         }
     ]
 }
