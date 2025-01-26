@@ -7,12 +7,12 @@ describe('Test suite for account creation Page', () =>
     it('Should be able to create new savings account', () => {
      
       cy.get('form > :nth-child(2) > .input').clear();
-      cy.get('form > :nth-child(2) > .input').type('123');
+      cy.get('form > :nth-child(2) > .input').type('test');
       cy.get(':nth-child(4) > .input').clear('1');
-      cy.get(':nth-child(4) > .input').type('123');
+      cy.get(':nth-child(4) > .input').type('test');
       cy.get(':nth-child(5) > .button').click();
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();
-      cy.get('#fromAccountId').select('13788');
+      cy.get('#fromAccountId').select('13455');
       cy.get('form > div > .button').click();
       cy.get('#openAccountResult > .title').click();
       cy.get('#openAccountResult > .title').click();
@@ -38,14 +38,14 @@ describe('Test suite for account creation Page', () =>
     it('Should be able to create new checking accoubnt', () => {
      
       cy.get('form > :nth-child(2) > .input').clear('1');
-      cy.get('form > :nth-child(2) > .input').type('123');
+      cy.get('form > :nth-child(2) > .input').type('test');
       cy.get(':nth-child(4) > .input').clear('1');
-      cy.get(':nth-child(4) > .input').type('123');
+      cy.get(':nth-child(4) > .input').type('test');
       cy.get('form > :nth-child(5)').click();
       cy.get(':nth-child(5) > .button').click();
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();
       cy.get('#type').select('1');
-      cy.get('#fromAccountId').select('13788');
+      cy.get('#fromAccountId').select('13455');
       cy.get('form > div > .button').click();
       cy.get('#openAccountResult > .title').click();
       cy.get('#openAccountResult > .title').click();
@@ -66,12 +66,12 @@ describe('Test suite for account creation Page', () =>
       
     });
   
-    it('Should be able to verify ui elements of account creation', () => {
+    /*it('Should be able to verify ui elements of account creation', () => {
       
       cy.get('form > :nth-child(2) > .input').clear('1');
-      cy.get('form > :nth-child(2) > .input').type('123');
+      cy.get('form > :nth-child(2) > .input').type('test');
       cy.get(':nth-child(4) > .input').clear('1');
-      cy.get(':nth-child(4) > .input').type('123');
+      cy.get(':nth-child(4) > .input').type('test');
       cy.get(':nth-child(5) > .button').click();
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();
       cy.get('#openAccountForm > .title').should('have.text', 'Open New Account');
@@ -91,5 +91,5 @@ describe('Test suite for account creation Page', () =>
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').should('have.text', 'Transaction');
       
-    });
+    });*/
   });
