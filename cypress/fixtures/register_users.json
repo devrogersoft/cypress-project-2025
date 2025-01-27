@@ -1,9 +1,6 @@
 {
     "userinfo": [
         {
-            "username": "manuthiyaa",
-            "password": "manuthiyaa",
-            "repeatpassword": "manuthiyaa",
             "street": "streetmanuthy",
             "city": "citymanuthy",
             "state": "statestate",
@@ -28,19 +25,17 @@
             "lastname": "James John"
         }
     ],
+   
     "validregister": [
         {
-            "username": "Tilclpit",
-            "password": "Tilclpit",
-            "repeatpassword": "Tilclpt",
+            "firstname": "Tilcy",
+            "lastname": "Thomason",
             "street": "Street 1, near church road , Roundhay",
             "city": "Test city",
             "state": "Test state",
-            "zip": "Ls25 647",
+            "zip": "Ls25647",
             "ssn": "244555",
-            "phone": "0123456789",
-            "firstname": "Tilcy",
-            "lastname": "Thomason"
+            "phone": "0123456789"
         }
     ]
 }

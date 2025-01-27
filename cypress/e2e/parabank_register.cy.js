@@ -38,32 +38,32 @@ describe('Test suite for register feature', () => {
 
   it('Should Register without a phone number', function () {
 
-
-    // cy.get('#customer\\.username').type(Math.floor(Math.random()*10000)); //to provide random numbers
-    //cy.get('#customer\\.username').type('TestAswat'+Math.floor(Math.random()*10000));//to provide random alpha numeric values
-     cy.fixture('register_users').then((data) => {
+      // To Generate random username and password
+      const randomUsername = 'user' + Math.floor(Math.random() * 10000);
+      const randomPassword = 'password' + Math.floor(Math.random() * 10000);
+      cy.fixture('register_users').then((data) => {
 
       data.userinfo.forEach((user) => {
-      cy.get('#customer\\.firstName').type(user.firstname);
-      cy.get('#customer\\.lastName').type(user.lastname);
-      cy.get(':nth-child(3) > [width="20%"]').click();
-      cy.get('#customer\\.address\\.street').type(user.street);
-      cy.get('#customer\\.address\\.city').type(user.city);
-      cy.get('#customer\\.address\\.state').type(user.state);
-      cy.get('#customer\\.address\\.zipCode').type(user.zip);
-      cy.get('#customer\\.ssn').type(user.ssn);
-      cy.get('#customer\\.username').type(user.username);
-      cy.get('#customer\\.password').type(user.password);
-      cy.get('#repeatedPassword').type(user.repeatpassword)
-      cy.get('[colspan="2"] > .button').click();
-      cy.get('#rightPanel > p').click();
-      cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
-      cy.get('.title').should('be.visible');
-      cy.get('body').click();
-      cy.get('.smallText').click();
-      cy.contains('a', 'Log Out').click();
-      cy.get('#loginPanel > :nth-child(3) > a').click();
-      cy.screenshot();
+        cy.get('#customer\\.firstName').type(user.firstname);
+        cy.get('#customer\\.lastName').type(user.lastname);
+        cy.get(':nth-child(3) > [width="20%"]').click();
+        cy.get('#customer\\.address\\.street').type(user.street);
+        cy.get('#customer\\.address\\.city').type(user.city);
+        cy.get('#customer\\.address\\.state').type(user.state);
+        cy.get('#customer\\.address\\.zipCode').type(user.zip);
+        cy.get('#customer\\.ssn').type(user.ssn);
+        cy.get('#customer\\.username').type(randomUsername);
+        cy.get('#customer\\.password').type(randomPassword);
+        cy.get('#repeatedPassword').type(randomPassword)
+        cy.get('[colspan="2"] > .button').click();
+        cy.get('#rightPanel > p').click();
+        cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
+        cy.get('.title').should('be.visible');
+        cy.get('body').click();
+        cy.get('.smallText').click();
+        cy.contains('a', 'Log Out').click();
+        cy.get('#loginPanel > :nth-child(3) > a').click();
+        cy.screenshot();
       });
     });
 
@@ -118,45 +118,45 @@ describe('Test suite for register feature', () => {
     cy.get('#customer\\.password\\.errors').should('have.text', 'Password is required.');
     cy.get('#repeatedPassword\\.errors').should('have.text', 'Password confirmation is required.');
     cy.screenshot();
- 
-});
+
+  });
 
   it('Should allow the user to register successfully', function () {
+    // To Generate random username and password
+    const randomUsername = 'user' + Math.floor(Math.random() * 10000);
+    const randomPassword = 'password' + Math.floor(Math.random() * 10000);
 
     cy.fixture('register_users').then((data) => {
+        data.validregister.forEach((user) => {
+            // Use dynamically generated random username and password
+            cy.get('#customer\\.firstName').type(user.firstname);
+            cy.get('#customer\\.lastName').type(user.lastname);
+            cy.get('#customer\\.address\\.street').type(user.street);
+            cy.get('#customer\\.address\\.city').type(user.city);
+            cy.get('#customer\\.address\\.state').type(user.state);
+            cy.get('#customer\\.address\\.zipCode').type(user.zip);
+            cy.get('#customer\\.phoneNumber').type(user.phone);
+            cy.get('#customer\\.ssn').type(user.ssn);
+            cy.get('#customer\\.username').type(randomUsername); // Use random username
+            cy.get('#customer\\.password').type(randomPassword); // Use random password
+            cy.get('#repeatedPassword').type(randomPassword); // Use the same random password for repeat
+            cy.get('[colspan="2"] > .button').click();
+            cy.wait(1000);
+            cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
+            cy.get('.smallText').should('have.text', 'Welcome ' + user.firstname + ' ' + user.lastname);
+            cy.get('#leftPanel > ul > :nth-child(8) > a').should('have.text', 'Log Out');
+            cy.get('#leftPanel > ul > :nth-child(7) > a').should('have.text', 'Request Loan');
+            cy.get('#leftPanel > ul > :nth-child(6) > a').should('have.text', 'Update Contact Info');
+            cy.get('#leftPanel > ul > :nth-child(5) > a').should('have.text', 'Find Transactions');
+            cy.get('#leftPanel > ul > :nth-child(4) > a').should('have.text', 'Bill Pay');
+            cy.get('#leftPanel > ul > :nth-child(3) > a').should('have.text', 'Transfer Funds');
+            cy.get('#leftPanel > ul > :nth-child(2) > a').should('have.text', 'Accounts Overview');
+            cy.get('#leftPanel > ul > :nth-child(1) > a').should('have.text', 'Open New Account');
+            cy.contains('a', 'Log Out').click();
+            cy.screenshot();
+        });
+    });
+});
 
-      data.validregister.forEach((user) => {
-    cy.get('#customer\\.firstName').type(user.firstname);
-    cy.get('#customer\\.lastName').type(user.lastname);
-    cy.get(':nth-child(3) > [width="20%"]').click();
-    cy.get('#customer\\.address\\.street').type(user.street);
-    cy.get('#customer\\.address\\.city').type(user.city);
-    cy.get('#customer\\.address\\.state').type(user.state);
-    cy.get(':nth-child(6) > [width="20%"]').click();
-    cy.get('#customer\\.address\\.zipCode').type(user.zip);
-    cy.get('#customer\\.phoneNumber').type(user.phone);
-    cy.get('#customer\\.ssn').type(user.ssn);
-    cy.get('#customer\\.username').type(user.username); //change
-    cy.get('#customer\\.password').type(user.password);//change
-    cy.get('#repeatedPassword').type(user.repeatpassword);//change
-    cy.get('[colspan="2"] > .button').click();
-    cy.wait(1000);
-    cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.');
-    cy.get('.smallText').should('have.text', 'Welcome Tilcy Thomason');
-    cy.get('#leftPanel > ul > :nth-child(8) > a').should('have.text', 'Log Out');
-    cy.get('#leftPanel > ul > :nth-child(7) > a').should('have.text', 'Request Loan');
-    cy.get('#leftPanel > ul > :nth-child(6) > a').should('have.text', 'Update Contact Info');
-    cy.get('#leftPanel > ul > :nth-child(5) > a').should('have.text', 'Find Transactions');
-    cy.get('#leftPanel > ul > :nth-child(4) > a').should('have.text', 'Bill Pay');
-    cy.get('#leftPanel > ul > :nth-child(3) > a').should('have.text', 'Transfer Funds');
-    cy.get('#leftPanel > ul > :nth-child(2) > a').should('have.text', 'Accounts Overview');
-    cy.get('#leftPanel > ul > :nth-child(1) > a').should('have.text', 'Open New Account');
-    cy.contains('a', 'Log Out').click();
-    cy.screenshot();
-
-  });
-
-})
-  });
 
 });
