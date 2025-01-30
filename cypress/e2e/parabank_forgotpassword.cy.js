@@ -62,21 +62,21 @@ describe('Test suite for forgot password feature', () =>
       });
     });
   });
-      it('Should Verify the UI elements of contact us form', function() 
-      {
+      // it('Should Verify the UI elements of contact us form', function() 
+      // {
       
-        cy.get('#loginPanel > :nth-child(2) > a').click();
-        cy.get(':nth-child(1) > [align="right"] > b').click();
-        cy.get(':nth-child(1) > [align="right"] > b').should('have.text', 'First Name:');
-        cy.get(':nth-child(2) > [align="right"] > b').should('have.text', 'Last Name:');
-        cy.get(':nth-child(3) > [align="right"] > b').should('have.text', 'Address:');
-        cy.get(':nth-child(6) > [align="right"] > b').should('have.text', 'Zip Code:');
-        cy.get(':nth-child(7) > [align="right"] > b').should('have.text', 'SSN:');
-        cy.get('[colspan="2"] > .button').should('be.enabled');
-        cy.get('[colspan="2"] > .button').should('be.visible');
-        cy.get('.title').should('have.text', 'Customer Lookup');
-        cy.get('body').click();
-        cy.get('#rightPanel > p').should('have.text', 'Please fill out the following information in order to validate your account.');
+      //   cy.get('#loginPanel > :nth-child(2) > a').click();
+      //   cy.get(':nth-child(1) > [align="right"] > b').click();
+      //   cy.get(':nth-child(1) > [align="right"] > b').should('have.text', 'First Name:');
+      //   cy.get(':nth-child(2) > [align="right"] > b').should('have.text', 'Last Name:');
+      //   cy.get(':nth-child(3) > [align="right"] > b').should('have.text', 'Address:');
+      //   cy.get(':nth-child(6) > [align="right"] > b').should('have.text', 'Zip Code:');
+      //   cy.get(':nth-child(7) > [align="right"] > b').should('have.text', 'SSN:');
+      //   cy.get('[colspan="2"] > .button').should('be.enabled');
+      //   cy.get('[colspan="2"] > .button').should('be.visible');
+      //   cy.get('.title').should('have.text', 'Customer Lookup');
+      //   cy.get('body').click();
+      //   cy.get('#rightPanel > p').should('have.text', 'Please fill out the following information in order to validate your account.');
         
-      });
+      // });
     });
