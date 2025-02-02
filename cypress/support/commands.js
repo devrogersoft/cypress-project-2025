@@ -1,3 +1,5 @@
+const XLSX = require('xlsx');
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -24,6 +26,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+
+Cypress.Commands.add('readUserInfoFromXlsx', (filePath) => {
+    const workbook = XLSX.readFile(filePath);
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const jsonData = XLSX.utils.sheet_to_json(sheet);
+    return jsonData;
+});
 Cypress.Commands.add('userRegistration', (myRandomValue) => {
     const randomUsername = 'user' + myRandomValue;
     const randomPassword = 'password' + myRandomValue;
