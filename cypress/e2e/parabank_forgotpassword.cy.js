@@ -18,7 +18,7 @@ describe('Test suite for forgot password feature', () =>
         cy.get('#address\\.state\\.errors').should('have.text', 'State is required.');
         cy.get('#address\\.zipCode\\.errors').should('have.text', 'Zip Code is required.');
         cy.get('#ssn\\.errors').should('have.text', 'Social Security Number is required.');
-       
+        cy.screenshot('EmptyFormSubmission');
       });
       it('Should Provide invalid customer informations to validate the account', function() 
       {
@@ -37,6 +37,7 @@ describe('Test suite for forgot password feature', () =>
         cy.get('[colspan="2"] > .button').click();
         cy.get('.error').should('have.text', 'The customer information provided could not be found.');
         cy.get('.error').should('be.visible');
+        cy.screenshot('InvalidCustomerInformations');
           });
         });
       });
@@ -60,7 +61,7 @@ describe('Test suite for forgot password feature', () =>
         cy.get('#rightPanel > :nth-child(2)').should('have.text', 'Your login information was located successfully. You are now logged in. ');
         cy.get('#rightPanel > :nth-child(3) > :nth-child(1)').should('have.text', 'Username');
         cy.get('#leftPanel > ul > :nth-child(8) > a').click();
-       
+        cy.screenshot('ValidCustomerInformations');
       });
     });
   });

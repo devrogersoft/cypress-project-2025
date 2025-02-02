@@ -32,6 +32,11 @@ Cypress.Commands.add('userRegistration', (myRandomValue) => {
     const randomUsername = 'user' + myRandomValue;
     const randomPassword = 'password' + myRandomValue;
 
+
+    // Store the random credentials in Cypress.env
+  Cypress.env('randomUsername', randomUsername);
+  Cypress.env('randomPassword', randomPassword);
+
     return cy.fixture('register_users').then((data) => {
         data.validregister.forEach((user) => {
             const randomFirstName = user.firstname+ ""+ myRandomValue;
@@ -60,8 +65,28 @@ Cypress.Commands.add('userRegistration', (myRandomValue) => {
             cy.get('#leftPanel > ul > :nth-child(3) > a').should('have.text', 'Transfer Funds');
             cy.get('#leftPanel > ul > :nth-child(2) > a').should('have.text', 'Accounts Overview');
             cy.get('#leftPanel > ul > :nth-child(1) > a').should('have.text', 'Open New Account');
+            cy.screenshot('ValidateUserRegistrationHomepage');
+
             cy.contains('a', 'Log Out').click();
-            cy.screenshot();
+           
         });
     });
 })
+
+  
+Cypress.Commands.add('login_users', () => {
+    const randomUsername = Cypress.env('randomUsername');  // Retrieve the username from Cypress.env
+    const randomPassword = Cypress.env('randomPassword');  // Retrieve the password from Cypress.env
+  
+    // Log the credentials to confirm
+    cy.log(`Logging in with Username: ${randomUsername}`);
+    cy.log(`Logging in with Password: ${randomPassword}`);
+  
+    // Use the stored credentials to log in
+    cy.get('input[name="username"]').type(randomUsername);  
+    cy.get('input[name="password"]').type(randomPassword); 
+    cy.get(':nth-child(5) > .button').click();  
+    cy.contains('b', 'Welcome').should('be.visible');
+    cy.screenshot('LoginWithValidCredentials');
+  });
+  

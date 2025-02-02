@@ -5,10 +5,11 @@ describe('Test suite for account creation Page', () =>
         }) 
           
     it('Should be able to create new savings account', () => {
-     
-      cy.get('form > :nth-child(2) > .input').type('paru');
-      cy.get(':nth-child(4) > .input').type('paru');
+      
+      cy.get('form > :nth-child(2) > .input').type('user3198');
+      cy.get(':nth-child(4) > .input').type('user3198');
       cy.get(':nth-child(5) > .button').click();
+     
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();
       cy.get('#fromAccountId').select('14787');
       cy.get('form > div > .button').click();
@@ -36,8 +37,8 @@ describe('Test suite for account creation Page', () =>
   
     it('Should be able to create new checking accoubnt', () => {
      
-      cy.get('form > :nth-child(2) > .input').type('paru');
-      cy.get(':nth-child(4) > .input').type('paru');
+      cy.get('form > :nth-child(2) > .input').type('user3198');
+      cy.get(':nth-child(4) > .input').type('user3198');
       cy.get('form > :nth-child(5)').click();
       cy.get(':nth-child(5) > .button').click();
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();

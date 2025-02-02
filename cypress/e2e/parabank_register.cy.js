@@ -1,3 +1,5 @@
+import 'cypress-mochawesome-reporter/register';
+
 describe('Test suite for register feature', () => {
   beforeEach(() => {
     cy.visit('https://parabank.parasoft.com/parabank/register.htm');
@@ -33,7 +35,7 @@ describe('Test suite for register feature', () => {
     cy.get('#customer\\.username').should('be.enabled');
     cy.get('#customer\\.password').should('be.enabled');
     cy.get('#repeatedPassword').should('be.enabled');
-    cy.screenshot();
+    cy.screenshot('ChcekUIElements');
   });
 
   it('Should Register without a phone number', function () {
@@ -63,7 +65,7 @@ describe('Test suite for register feature', () => {
         cy.get('.smallText').click();
         cy.contains('a', 'Log Out').click();
         cy.get('#loginPanel > :nth-child(3) > a').click();
-        cy.screenshot();
+        cy.screenshot('RegisterWithoutPhone');
       });
     });
 
@@ -88,7 +90,7 @@ describe('Test suite for register feature', () => {
         cy.get('#repeatedPassword').type(user.repeatpassword);
         cy.get('[colspan="2"] > .button').click();
         cy.get('#repeatedPassword\\.errors').should('have.text', 'Passwords did not match.');
-        cy.screenshot();
+        cy.screenshot('PasswordandConfirmPasswordMismatch');
       });
     });
   });
@@ -117,14 +119,14 @@ describe('Test suite for register feature', () => {
     cy.get('#customer\\.username\\.errors').should('have.text', 'Username is required.');
     cy.get('#customer\\.password\\.errors').should('have.text', 'Password is required.');
     cy.get('#repeatedPassword\\.errors').should('have.text', 'Password confirmation is required.');
-    cy.screenshot();
+    cy.screenshot('EmptyFormSubmission');
 
   });
 
   it('Should allow the user to register successfully', function () {
     let myRandomValue = Math.floor(Math.random() * 10000);
     cy.userRegistration(myRandomValue);
-    
+    cy.screenshot('ValidateUserRegistration');
 });
 
 

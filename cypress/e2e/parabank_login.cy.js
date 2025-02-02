@@ -4,60 +4,55 @@ describe('Test suite for Login feature', () => {
     cy.visit('https://parabank.parasoft.com/parabank/index.htm');
   })
 
-  it('Should Validate empty form submission', function () 
-  {
+  it('Should Validate empty form submission', function () {
 
     cy.get(':nth-child(5) > .button').click();
     cy.get('.error').should('have.text', 'Please enter a username and password.');
-    cy.screenshot();
+    cy.screenshot('EmptyFormSubmission');
   });
 
-  it('should check the user can login using username only', function () 
-  {
+  it('should check the user can login using username only', function () {
 
     cy.fixture('login_users').then((data) => {
 
-    data.invalidUser.forEach((usernameal) => {
-    cy.get(':nth-child(2) > .input').type(usernameal.username);
-    cy.get(':nth-child(5) > .button').click();
-    cy.get('.error').should('have.text', 'Please enter a username and password.');
-    cy.url().should('include', '/login');
-    cy.screenshot();
+      data.invalidUser.forEach((usernameal) => {
+        cy.get(':nth-child(2) > .input').type(usernameal.username);
+        cy.get(':nth-child(5) > .button').click();
+        cy.get('.error').should('have.text', 'Please enter a username and password.');
+        cy.url().should('include', '/login');
+        cy.screenshot('LoginUsingUsernameOnly');
       });
+    });
   });
-});
 
-  it('should check the user can login using password only', function () 
-  {
+  it('should check the user can login using password only', function () {
     cy.fixture('login_users').then((data) => {
 
-    data.invalidpassword.forEach((passwordonly) => {
-    cy.get(':nth-child(4) > .input').type(passwordonly.password);
-    cy.get(':nth-child(5) > .button').click();
-    cy.get('.error').should('have.text', 'Please enter a username and password.');
-    cy.url().should('include', '/login');
-    cy.screenshot();
+      data.invalidpassword.forEach((passwordonly) => {
+        cy.get(':nth-child(4) > .input').type(passwordonly.password);
+        cy.get(':nth-child(5) > .button').click();
+        cy.get('.error').should('have.text', 'Please enter a username and password.');
+        cy.url().should('include', '/login');
+        cy.screenshot('LoginUsingPasswordOnly');
       });
+    });
   });
-});
 
-  it('should check the user can login using invalid credentials', function () 
-  {
+  it('should check the user can login using invalid credentials', function () {
     cy.fixture('login_users').then((data) => {
 
-    data.invalidcredentials.forEach((invalidcredential) => {
-    cy.get(':nth-child(2) > .input').type(invalidcredential.username);
-    cy.get(':nth-child(4) > .input').type(invalidcredential.password);
-    cy.get(':nth-child(5) > .button').click();
-    cy.get('.error').should('have.text', 'The username and password could not be verified.');
-    cy.url().should('include', '/login');
-    cy.screenshot();
+      data.invalidcredentials.forEach((invalidcredential) => {
+        cy.get(':nth-child(2) > .input').type(invalidcredential.username);
+        cy.get(':nth-child(4) > .input').type(invalidcredential.password);
+        cy.get(':nth-child(5) > .button').click();
+        cy.get('.error').should('have.text', 'The username and password could not be verified.');
+        cy.url().should('include', '/login');
+        cy.screenshot('LoginUsingInvalidCredentials');
       });
     })
   });
 
-  it('should Verify the UI elements of login page', function () 
-  {
+  it('should Verify the UI elements of login page', function () {
 
     cy.get('h2').should('have.text', 'Customer Login');
     cy.get('h2').should('be.visible');
@@ -67,18 +62,14 @@ describe('Test suite for Login feature', () => {
     cy.get(':nth-child(4) > .input').should('be.enabled');
     cy.get(':nth-child(5) > .button').should('be.visible');
     cy.get('#loginPanel > :nth-child(2) > a').should('have.text', 'Forgot login info?');
-    cy.screenshot();
+    cy.screenshot('LoginPageUIElements');
   });
 
-  it('should check the user can login using valid credentials', function () 
-  {
-    cy.fixture('login_users').then((data) => {
-    data.userlogininfo.forEach((userlog) => {
-    cy.get(':nth-child(2) > .input').type(userlog.username);
-    cy.get(':nth-child(4) > .input').type(userlog.password);
-    cy.get(':nth-child(5) > .button').click();
-    cy.contains('b', 'Welcome').should('be.visible');
-      });
+  it('should check the user can login using valid credentials', function () {
+    const myRandomValue = Math.floor(Math.random() * 10000); 
+    cy.visit('https://parabank.parasoft.com/parabank/register.htm');
+    cy.userRegistration(myRandomValue).then(() => {
+    cy.login_users();  // Login with the same credentials
     });
   })
 });
