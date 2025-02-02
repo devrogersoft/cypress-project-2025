@@ -1,4 +1,5 @@
 const XLSX = require('xlsx');
+const fs = require('fs');
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -27,13 +28,31 @@ const XLSX = require('xlsx');
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
+
 Cypress.Commands.add('readUserInfoFromXlsx', (filePath) => {
-    const workbook = XLSX.readFile(filePath);
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    const jsonData = XLSX.utils.sheet_to_json(sheet);
-    return jsonData;
+    console.log(filePath);
+    try {
+        const workbook = XLSX.readFile(filePath);
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(sheet);
+        return jsonData;
+    } catch (error) {
+        console.error('Error reading the Excel file:', error);
+        throw new Error('Cannot access file ' + filePath);
+    }
 });
+
+
+function readExcelFile(filePath) {
+    const workbook = xlsx.readFile(filePath);
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const jsonData = xlsx.utils.sheet_to_json(worksheet);
+    return jsonData;
+}
+
+
 Cypress.Commands.add('userRegistration', (myRandomValue) => {
     const randomUsername = 'user' + myRandomValue;
     const randomPassword = 'password' + myRandomValue;
