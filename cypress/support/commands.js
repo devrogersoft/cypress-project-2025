@@ -1,47 +1,22 @@
-const XLSX = require('xlsx');
-const fs = require('fs');
-
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import * as XLSX from 'xlsx';
 
 
-
-Cypress.Commands.add('readUserInfoFromXlsx', (filePath) => {
-    console.log(filePath);
-    try {
-        const workbook = XLSX.readFile(filePath);
-        const sheetName = workbook.SheetNames[0];
-        const sheet = workbook.Sheets[sheetName];
-        const jsonData = XLSX.utils.sheet_to_json(sheet);
-        return jsonData;
-    } catch (error) {
-        console.error('Error reading the Excel file:', error);
-        throw new Error('Cannot access file ' + filePath);
-    }
-});
+Cypress.Commands.add('readExcel', (filePath) => {
+    cy.readFile(filePath, 'binary').then((fileContent) => {
+      // Convert binary data to a workbook
+      const workbook = XLSX.read(fileContent, { type: 'binary' });
+  
+      // Access the first sheet
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+  
+      // Convert sheet data to JSON
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+  
+      // Return the parsed JSON data
+      return jsonData;
+    });
+  });
 
 
 function readExcelFile(filePath) {
