@@ -55,7 +55,7 @@ describe('Test suite for forgot password feature', () =>
         cy.get('#address\\.zipCode').type(user.zip);
         cy.get('#ssn').type(user.ssn);
         cy.get('[colspan="2"] > .button').click();
-        //cy.get('.title').should('have.text', 'Customer Lookup');
+        cy.get('.title').should('have.text', 'Customer Lookup');
         cy.get('#rightPanel > :nth-child(2)').should('have.text', 'Your login information was located successfully. You are now logged in. ');
         cy.get('#rightPanel > :nth-child(3) > :nth-child(1)').should('have.text', 'Username');
         cy.get('#leftPanel > ul > :nth-child(8) > a').click();

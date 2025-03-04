@@ -128,18 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
-# screenshots
-screenshots/
-=======
 
 # screenshot folder
 screenshots/
->>>>>>> origin/feature_register_aswathy
-=======
-
-# screenshot folder
-screenshots/
->>>>>>> origin/feature_register_aswathy
