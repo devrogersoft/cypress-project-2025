@@ -76,7 +76,7 @@ describe('Test suite for forgot password feature', () =>
         cy.get('[colspan="2"] > .button').should('be.enabled');
         cy.get('[colspan="2"] > .button').should('be.visible');
         cy.get('.title').should('have.text', 'Customer Lookup');
-        //adding a comment
+       
         cy.get('body').click();
         cy.get('#rightPanel > p').should('have.text', 'Please fill out the following information in order to validate your account.');
         
