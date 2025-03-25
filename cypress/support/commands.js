@@ -65,7 +65,7 @@ Cypress.Commands.add('userRegistration', (myRandomValue) => {
             cy.get('#leftPanel > ul > :nth-child(3) > a').should('have.text', 'Transfer Funds');
             cy.get('#leftPanel > ul > :nth-child(2) > a').should('have.text', 'Accounts Overview');
             cy.get('#leftPanel > ul > :nth-child(1) > a').should('have.text', 'Open New Account');
-            cy.screenshot('ValidateUserRegistrationHomepage');
+            //cy.screenshot('ValidateUserRegistrationHomepage');
 
             cy.contains('a', 'Log Out').click();
            
@@ -87,6 +87,6 @@ Cypress.Commands.add('login_users', () => {
     cy.get('input[name="password"]').type(randomPassword); 
     cy.get(':nth-child(5) > .button').click();  
     cy.contains('b', 'Welcome').should('be.visible');
-    cy.screenshot('LoginWithValidCredentials');
+   // cy.screenshot('LoginWithValidCredentials');
   });
   

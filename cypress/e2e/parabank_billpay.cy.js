@@ -5,20 +5,34 @@ describe('Test suite for account creation Page', () => {
 
   it('Should be able to verify the validation messages displaying on empty submission', () => {
 
-    cy.get('form > :nth-child(2) > .input').clear();
-    cy.get('form > :nth-child(2) > .input').type('paru');
+    /*cy.get('form > :nth-child(2) > .input').clear();
+    cy.get('form > :nth-child(2) > .input').type('test');
     cy.get(':nth-child(4) > .input').clear('1');
-    cy.get(':nth-child(4) > .input').type('paru');
+    cy.get(':nth-child(4) > .input').type('test');
     cy.get(':nth-child(5) > .button').click();
     cy.get('#leftPanel > ul > :nth-child(4) > a').click();
     cy.get('.button').eq(1).click();
     cy.contains('span', 'Payee name is required.').should('be.visible');
     cy.contains('span', 'Address is required.').should('be.visible');
     cy.contains('span', 'Zip Code is required.').should('be.visible');
-    cy.contains('span', 'The amount cannot be empty.').should('be.visible');
+    cy.contains('span', 'The amount cannot be empty.').should('be.visible');*/
+
+    const myRandomValue = Math.floor(Math.random() * 10000); 
+    cy.visit('https://parabank.parasoft.com/parabank/register.htm');//git status
+    cy.userRegistration(myRandomValue).then(() => {
+    cy.login_users();  // Login with the same credentials
+    cy.get('#leftPanel > ul > :nth-child(4) > a').click();
+    cy.get('.button').eq(1).click();
+    cy.contains('span', 'Payee name is required.').should('be.visible');
+    cy.contains('span', 'Address is required.').should('be.visible');
+    cy.contains('span', 'Zip Code is required.').should('be.visible');
+    cy.contains('span', 'The amount cannot be empty.').should('be.visible')
+    });
 
 
   });
+
+  
   it('Should be able to verify payment', () => {
 
     cy.get('form > :nth-child(2) > .input').clear();
@@ -43,9 +57,9 @@ describe('Test suite for account creation Page', () => {
   it('Should be able to add payment details', () => {
 
     cy.get('form > :nth-child(2) > .input').clear();
-    cy.get('form > :nth-child(2) > .input').type('paru');
+    cy.get('form > :nth-child(2) > .input').type('test');
     cy.get(':nth-child(4) > .input').clear('1');
-    cy.get(':nth-child(4) > .input').type('paru');
+    cy.get(':nth-child(4) > .input').type('test');
     cy.get(':nth-child(5) > .button').click();
     cy.get('#leftPanel > ul > :nth-child(4) > a').click();
     cy.get('[name="payee.name"]').click().type('Leela');
