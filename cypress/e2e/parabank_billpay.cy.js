@@ -17,7 +17,6 @@ describe('Test suite for account creation Page', () => {
     cy.contains('span', 'Zip Code is required.').should('be.visible');
     cy.contains('span', 'The amount cannot be empty.').should('be.visible');
 
-
   });
   it('Should be able to verify payment', () => {
 
