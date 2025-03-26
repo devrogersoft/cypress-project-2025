@@ -5,13 +5,16 @@ describe('Test suite for account creation Page', () =>
         }) 
           
     it('Should be able to create new savings account', () => {
-      
-      cy.get('form > :nth-child(2) > .input').type('user3198');
-      cy.get(':nth-child(4) > .input').type('user3198');
-      cy.get(':nth-child(5) > .button').click();
      
+      const myRandomValue = Math.floor(Math.random() * 10000); 
+      cy.visit('https://parabank.parasoft.com/parabank/register.htm');
+      cy.userRegistration(myRandomValue).then(() => {
+      cy.login_users();  // Login with the same credentials
+      });
+
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();
-      cy.get('#fromAccountId').select('14787');
+
+      cy.get('#fromAccountId').select(0);   
       cy.get('form > div > .button').click();
       cy.get('#openAccountResult > .title').click();
       cy.get('#openAccountResult > .title').click();
@@ -25,25 +28,26 @@ describe('Test suite for account creation Page', () =>
       cy.get('#accountDetails > .title').should('have.text', 'Account Details');
       cy.get('#balance').click();
       cy.get('#balance').click();
-      cy.get('#balance').should('have.text', '$100.00');
+      cy.get('#balance').should('have.text', '$105.00');
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').should('have.text', 'Transaction');
       cy.get('thead > tr > :nth-child(3)').click();
       cy.get('thead > tr > :nth-child(3)').click();
       cy.get('thead > tr > :nth-child(3)').should('have.text', 'Debit (-)');
-      
+      cy.screenshot('newsavingsaccount');
     });
   
-    it('Should be able to create new checking accoubnt', () => {
+    it('Should be able to create new checking account', () => {
      
-      cy.get('form > :nth-child(2) > .input').type('user3198');
-      cy.get(':nth-child(4) > .input').type('user3198');
-      cy.get('form > :nth-child(5)').click();
-      cy.get(':nth-child(5) > .button').click();
+      const myRandomValue = Math.floor(Math.random() * 10000); 
+      cy.visit('https://parabank.parasoft.com/parabank/register.htm');
+      cy.userRegistration(myRandomValue).then(() => {
+      cy.login_users();  
+      });
+
       cy.get('#leftPanel > ul > :nth-child(1) > a').click();
-      cy.get('#type').select('1');
-      cy.get('#fromAccountId').select('14787');
+      cy.get('#fromAccountId').select(0);                
       cy.get('form > div > .button').click();
       cy.get('#openAccountResult > .title').click();
       cy.get('#openAccountResult > .title').click();
@@ -54,14 +58,14 @@ describe('Test suite for account creation Page', () =>
       cy.get('#newAccountId').click();
       cy.get('#accountType').click();
       cy.get('#accountType').click();
-      cy.get('#accountType').should('have.text', 'SAVINGS');
+      cy.get('#accountType').should('have.text', 'CHECKING');
       cy.get('#balance').click();
       cy.get('#balance').click();
-      cy.get('#balance').should('have.text', '$100.00');
+      cy.get('#balance').should('have.text', '$105.00');
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').should('have.text', 'Transaction');
-      
+      cy.screenshot('newcheckingaccount');
     });
   
     

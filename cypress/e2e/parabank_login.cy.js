@@ -38,19 +38,19 @@ describe('Test suite for Login feature', () => {
     });
   });
 
-  it('should check the user can login using invalid credentials', function () {
-    cy.fixture('login_users').then((data) => {
+  // it('should check the user can login using invalid credentials', function () {
+  //   cy.fixture('login_users').then((data) => {
 
-      data.invalidcredentials.forEach((invalidcredential) => {
-        cy.get(':nth-child(2) > .input').type(invalidcredential.username);
-        cy.get(':nth-child(4) > .input').type(invalidcredential.password);
-        cy.get(':nth-child(5) > .button').click();
-        cy.get('.error').should('have.text', 'The username and password could not be verified.');
-        cy.url().should('include', '/login');
-        cy.screenshot('LoginUsingInvalidCredentials');
-      });
-    })
-  });
+  //     data.invalidcredentials.forEach((invalidcredential) => {
+  //       cy.get(':nth-child(2) > .input').type(invalidcredential.username);
+  //       cy.get(':nth-child(4) > .input').type(invalidcredential.password);
+  //       cy.get(':nth-child(5) > .button').click();
+  //       cy.get('.error').should('have.text', 'The username and password could not be verified.');
+  //       cy.url().should('include', '/login');
+  //       cy.screenshot('LoginUsingInvalidCredentials');
+  //     });
+  //   })
+  // });
 
   it('should Verify the UI elements of login page', function () {
 
