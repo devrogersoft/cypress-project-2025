@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "cypress run --browser chrome --env reportDir=cypress/reports/chrome",
-    "test:edge": "cypress run --browser edge --env reportDir=cypress/reports/edge",
-    "test:firefox": "cypress run --browser firefox --env reportDir=cypress/reports/firefox"
-  },
+  "test:chrome": "cypress run --browser chrome --reporter cypress-mochawesome-reporter --reporter-options reportDir=cypress/reports/chrome",
+  "test:firefox": "cypress run --browser firefox --reporter cypress-mochawesome-reporter --reporter-options reportDir=cypress/reports/firefox",
+  "test:edge": "cypress run --browser edge --reporter cypress-mochawesome-reporter --reporter-options reportDir=cypress/reports/edge",
+  "test:parallel": "concurrently \"npm run test:chrome\" \"npm run test:firefox\" \"npm run test:edge\""
+},
   "keywords": [],
   "author": "",
   "license": "ISC",

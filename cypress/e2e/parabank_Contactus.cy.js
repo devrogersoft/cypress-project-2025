@@ -16,7 +16,6 @@ describe('Test suite for Contact us Page', () =>
         cy.get('#phone').type('ffrr');
         cy.get('[colspan="2"] > .button').click();
         
-        
       });
 
 });

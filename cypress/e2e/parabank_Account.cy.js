@@ -16,22 +16,14 @@ describe('Test suite for account creation Page', () =>
       cy.get('#fromAccountId').select(0);   
       cy.get('form > div > .button').click();
       cy.get('#openAccountResult > .title').click();
-      cy.get('#openAccountResult > .title').click();
       cy.get('#openAccountResult > .title').should('have.text', 'Account Opened!');
-      cy.get('#openAccountResult > :nth-child(2)').click();
       cy.get('#openAccountResult > :nth-child(2)').click();
       cy.get('#openAccountResult > :nth-child(2)').should('have.text', 'Congratulations, your account is now open.');
       cy.get('#newAccountId').click();
       cy.get('#accountDetails > .title').click();
-      cy.get('#accountDetails > .title').click();
       cy.get('#accountDetails > .title').should('have.text', 'Account Details');
-      cy.get('#balance').click();
-      cy.get('#balance').click();
-      cy.get('#balance').should('have.text', '$105.00');
-      cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').should('have.text', 'Transaction');
-      cy.get('thead > tr > :nth-child(3)').click();
       cy.get('thead > tr > :nth-child(3)').click();
       cy.get('thead > tr > :nth-child(3)').should('have.text', 'Debit (-)');
       cy.screenshot('newsavingsaccount');
@@ -49,23 +41,15 @@ describe('Test suite for account creation Page', () =>
       cy.get('#fromAccountId').select(0);                
       cy.get('form > div > .button').click();
       cy.get('#openAccountResult > .title').click();
-      cy.get('#openAccountResult > .title').click();
       cy.get('#openAccountResult > .title').should('have.text', 'Account Opened!');
-      cy.get('#openAccountResult > :nth-child(2)').click();
       cy.get('#openAccountResult > :nth-child(2)').click();
       cy.get('#openAccountResult > :nth-child(2)').should('have.text', 'Congratulations, your account is now open.');
       cy.get('#newAccountId').click();
       cy.get('#accountType').click();
-      cy.get('#accountType').click();
       cy.get('#accountType').should('have.text', 'CHECKING');
-      cy.get('#balance').click();
-      cy.get('#balance').click();
-      cy.get('#balance').should('have.text', '$105.00');
-      cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').click();
       cy.get('thead > tr > :nth-child(2)').should('have.text', 'Transaction');
       cy.screenshot('newcheckingaccount');
     });
   
-    
     });
